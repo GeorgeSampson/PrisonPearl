@@ -80,6 +80,9 @@ public class PrisonPearlUtil {
 			// pp is null b/c manager has already removed it due to /ppfree or throwing the pearl.
 			// so use passPearl instead to free the player.
 			PrisonPearlPlugin.doDebug("Player {0} was freed; teleporting to pearl-toss free location", uuid);
+			if(PrisonPearlConfig.shouldPpsummonClearInventory()) {
+				dropInventory(p, p.getLocation(), PrisonPearlConfig.shouldPpsummonLeavePearls());
+			}
 			if (passPearl.getLocation().getY() < 1.0) {
 				p.teleport(passPearl.getLocation().add(0,1.0,0));
 			} else {
